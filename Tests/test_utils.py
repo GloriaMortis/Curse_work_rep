@@ -5,13 +5,15 @@ with open('operations.json', 'r', encoding='utf-8') as file:
     operations = json.load(file)
 
 
-def test_search_true_operations():  # Функция для фильтрации правильных операций и корректировке даты
+def test_search_and_correct_operations():  # Функция для фильтрации правильных операций и корректировке даты
     operations_list = []
 
     for operation in operations:
         if operation == {}:
             continue
         if operation["state"] == "CANCELED":
+            continue
+        if operation["description"] == "Открытие вклада":
             continue
         else:
             operations_list.append(operation)
@@ -22,7 +24,15 @@ def test_search_true_operations():  # Функция для фильтрации
 
 
 def test_reverse_and_show_5_operations_list():  # Корректировка всего списка в правильном порядке и возвращает 5 последних операций
-    operations_list = search_true_operations()
+    operations_list = search_and_correct_operations()
     reverse_operations_list = operations_list[::-1]
 
     return reverse_operations_list[:5]
+
+
+operations_list = reverse_and_show_5_operations_list()
+for operations in operations_list:
+    print(f'{operations["date"]} {operations["description"]}')
+    print(f'{operations["from"]} -> {operations["to"]}')
+    print(f'{operations["operationAmount"]["amount"]} {operations["operationAmount"]["currency"]["name"]}')
+    print()
