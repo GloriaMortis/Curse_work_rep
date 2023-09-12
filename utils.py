@@ -29,10 +29,3 @@ def reverse_and_show_5_operations_list():  # Корректировка всег
 
     return reverse_operations_list[:5]
 
-
-operations_list = reverse_and_show_5_operations_list()
-for operations in operations_list:
-    print(f'{operations["date"]} {operations["description"]}')
-    print(f'{operations["from"]} -> {operations["to"]}')
-    print(f'{operations["operationAmount"]["amount"]} {operations["operationAmount"]["currency"]["name"]}')
-    print()
