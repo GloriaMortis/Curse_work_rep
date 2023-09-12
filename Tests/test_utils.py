@@ -5,7 +5,7 @@ with open('operations.json', 'r', encoding='utf-8') as file:
     operations = json.load(file)
 
 
-def search_true_operations():  # Функция для фильтрации правильных операций и корректировке даты
+def test_search_true_operations():  # Функция для фильтрации правильных операций и корректировке даты
     operations_list = []
 
     for operation in operations:
@@ -21,7 +21,7 @@ def search_true_operations():  # Функция для фильтрации пр
     return sorted(operations_list, key=lambda k, reverse=True: '-'.join(reversed(k["date"].split('-'))))
 
 
-def reverse_and_show_5_operations_list():  # Корректировка всего списка в правильном порядке и возвращает 5 последних операций
+def test_reverse_and_show_5_operations_list():  # Корректировка всего списка в правильном порядке и возвращает 5 последних операций
     operations_list = search_true_operations()
     reverse_operations_list = operations_list[::-1]
 
